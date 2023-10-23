@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "M3JrOWawLzygkL8e5aLctreopSuhLsUsbu0cGCtUM94+wyy71zefIDDlTfoDHW3YxcEGx+ID3/lvXLGgaBl7ug==",
+  "success": true,
+  "projectFilePath": "D:\\Modoku_29_09\\HMSMP\\HMSMP\\HMSMP\\HMSMP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Modoku\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.mediamanager\\1.1.1\\plugin.mediamanager.1.1.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.mediamanager.forms\\1.1.1\\plugin.mediamanager.forms.1.1.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.permissions\\6.0.1\\plugin.permissions.6.0.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.7.0\\system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.3\\system.runtime.compilerservices.unsafe.4.5.3.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.communitytoolkit\\2.0.0\\xamarin.communitytoolkit.2.0.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.forms\\5.0.0.2478\\xamarin.forms.5.0.0.2478.nupkg.sha512"
+  ],
+  "logs": []
+}

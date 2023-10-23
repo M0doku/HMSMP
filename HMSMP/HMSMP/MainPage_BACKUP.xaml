@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HMSMP.MainPage"
+	   xmlns:pages="clr-namespace:HMSMP"
+	   Shell.NavBarIsVisible="False"
+	   >
+
+
+	<FlyoutItem Title="HMSMP">
+		<Tab>
+			<ShellContent  Appearing="ContentPage_Appearing">
+
+				<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			  >
+
+					<StackLayout x:Name="lad" x:FieldModifier="public">
+						<StackLayout.GestureRecognizers>
+							<SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped_1"/>
+
+						</StackLayout.GestureRecognizers>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="2*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+
+							<Button x:Name="Find_music" x:FieldModifier="public" Grid.Column="0" HorizontalOptions="StartAndExpand"  Text="Update List" FontFamily="LED" TextColor="Red" Clicked="Find_music_Clicked"/>
+							<Button x:Name="music_List" x:FieldModifier="public" Grid.Column="2" HorizontalOptions="CenterAndExpand" Text="Music List" FontFamily="LED" TextColor="Red"  Clicked="songList_Clicked"></Button>
+							<Button x:Name="Settings" x:FieldModifier="public" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="Settings" FontFamily="LED"  TextColor="Red" Clicked="Settings_Clicked"/>
+						</Grid>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="50"/>
+								<RowDefinition x:Name="row1" Height="100"/>
+								<RowDefinition Height="50"/>
+								<RowDefinition Height="30"/>
+								<RowDefinition x:Name="row4" Height="50"/>
+								<RowDefinition x:Name="row5" Height="40"/>
+								<RowDefinition x:Name="row6" Height="80"/>
+							</Grid.RowDefinitions>
+							<Grid.GestureRecognizers>
+								<SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped"/>
+							</Grid.GestureRecognizers>
+
+							<Label x:Name="Label_song"   HorizontalOptions="Center" Text="" FontFamily="Courier New" FontSize="20" TextColor="Red"></Label>
+							<Label x:Name="Label_songName" x:FieldModifier="public" Grid.Row="0" Text="---" FontFamily="LED" HorizontalOptions="CenterAndExpand" FontSize="25" TextColor="Red" HorizontalTextAlignment="Center"></Label>
+							<Label x:Name="Label_artist" x:FieldModifier="public" Grid.Row="1" Text="---" FontFamily="LED"  HorizontalOptions="CenterAndExpand" FontSize="25" TextColor="Red"></Label>
+							<Label x:Name="Label_test" IsVisible="false"  Text="test" Grid.Row="7" FontFamily="FT" FontSize="20"  TextColor="Red" ></Label>
+							<Image x:Name="Image_artist" Grid.Row="2"  HeightRequest="100" WidthRequest="200"></Image>
+							<Slider x:Name="slider_Position"  Grid.Row="2" HorizontalOptions="FillAndExpand" Minimum="0" MinimumTrackColor="Red" ThumbColor="Red" Value="0" ></Slider>
+							<Label x:Name="playerDuration" Grid.Row="3" FontSize="30" Text="Duration" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily ="FT" TextColor="Red" ></Label>
+							<Button x:Name="shuffle" x:FieldModifier="public" IsVisible="true" Grid.Row="5" Text="Shuffle" Clicked="shuffle_Clicked" FontFamily="LED"   HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="Red"/>
+
+							<Label x:Name="test_2" IsVisible="false" Text="test" Grid.Row="8"  FontFamily="LED" FontSize="20"  TextColor="Red"/>
+							<Label x:Name="test_3" IsVisible="false" Text="test" Grid.Row="9"  FontFamily="LED" FontSize="20"  TextColor="Red" />
+							<Label x:Name="test_4" IsVisible="false" Text="test" Grid.Row="10"  FontFamily="LED" FontSize="20"  TextColor="Red" />
+						</Grid>
+
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition x:Name="playerRow0" Height="0"/>
+								<RowDefinition x:Name="playerRow1" Height="*" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*"  />
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<BoxView BackgroundColor="White">
+								<BoxView.GestureRecognizers>
+									<SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped_1"/>
+								</BoxView.GestureRecognizers>
+							</BoxView>
+							<ImageButton x:Name="playerNext" x:FieldModifier="public" Source="nextplay_button.png" Clicked="playerNext_Clicked"   Grid.Row="1" Grid.Column="2" ></ImageButton>
+							<ImageButton x:Name="playerPlay" x:FieldModifier="public" Source="play_button.png" Clicked="playerPlay_Clicked"  Grid.Row="1" Grid.Column="1" ></ImageButton>
+							<ImageButton x:Name="playerPause" x:FieldModifier="public" Source="pause_button.png"  Clicked="playerPause_Clicked"  IsVisible="false" Grid.Row="1" Grid.Column="1"></ImageButton>
+							<ImageButton x:Name="playerPrev" x:FieldModifier="public" Source="prev_button.png" Clicked="playerPrev_Clicked" Grid.Row="1" Grid.Column="0"></ImageButton>
+							<Button x:Name="Stop" x:FieldModifier="public" IsEnabled="True" IsVisible="True" Grid.Row="2" Grid.Column="0" Text="Stop" Clicked="Stop_Clicked"></Button>
+						</Grid>
+					</StackLayout>
+				</ContentPage>
+			</ShellContent>
+		</Tab>
+	</FlyoutItem>
+	<FlyoutItem Title="Settings">
+		<ShellContent ContentTemplate="{DataTemplate pages:PlayerSettings}"></ShellContent>
+	</FlyoutItem>
+	<FlyoutItem Title="Song List" Route="songList" >
+		<ShellContent ContentTemplate="{DataTemplate pages:songList}"></ShellContent>
+	</FlyoutItem>
+</Shell>

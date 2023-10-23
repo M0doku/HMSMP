@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HMSMP.MainPage"
+	   xmlns:pages="clr-namespace:HMSMP"
+	   x:Name="shellMainPage"
+	   x:FieldModifier="public"
+	   Shell.NavBarIsVisible="False"
+	   FlyoutBackgroundColor="Black"
+	   
+	   >
+	
+	<FlyoutItem Title="MediaPlayer">
+		<Tab>
+			<ShellContent  Appearing="ContentPage_Appearing">
+
+				<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			   >
+
+					<StackLayout x:Name="lad" x:FieldModifier="public">
+						<StackLayout.GestureRecognizers>
+							
+							
+						</StackLayout.GestureRecognizers>
+						<Grid>
+							<Grid.GestureRecognizers>
+								<SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped_1"/>
+							</Grid.GestureRecognizers>
+							<Grid.RowDefinitions>
+								<RowDefinition x:FieldModifier="public" x:Name="buttonRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="artistRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="songRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="sliderRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="durationRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="shuffleRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="buttonsRow" Height="*"/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							
+							<Button x:Name="Find_music" IsVisible="false" x:FieldModifier="public" Grid.Column="0" Grid.Row="0" HorizontalOptions="StartAndExpand"  Text="Update List" FontFamily="LED" TextColor="Red" Clicked="Find_music_Clicked"/>
+							<Button x:Name="music_List" IsVisible="false" x:FieldModifier="public" Grid.Column="2" Grid.Row="0" HorizontalOptions="CenterAndExpand" Text="Music List" FontFamily="LED" TextColor="Red"  Clicked="songList_Clicked"></Button>
+							<Button x:Name="Settings" IsVisible="false" x:FieldModifier="public" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" Text="Settings" FontFamily="LED"  TextColor="Red" Clicked="Settings_Clicked"/>
+
+							<Label x:Name="Label_song"   HorizontalOptions="Center" Text="" FontFamily="Courier New" FontSize="20" TextColor="Red"></Label>
+							<Label x:Name="Label_songName" x:FieldModifier="public" Grid.Row="1" Grid.ColumnSpan="3" Text="---" FontFamily="LED" HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="Red" HorizontalTextAlignment="Center"></Label>
+							<Label x:Name="Label_artist" x:FieldModifier="public" Grid.Row="2" Grid.ColumnSpan="3" Text="---" FontFamily="LED"  HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="Red" HorizontalTextAlignment="Center"></Label>
+							<Label x:Name="Label_test" IsVisible="false"  Text="test" Grid.Row="7" FontFamily="FT" FontSize="20"  TextColor="Red" ></Label>
+							<Image x:Name="Image_artist" Grid.Row="2"  HeightRequest="100" WidthRequest="200"></Image>
+							<Slider x:Name="slider_Position"  Grid.Row="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Minimum="0" MinimumTrackColor="Red" ThumbColor="Red" Value="0" ></Slider>
+							<Label x:Name="playerDuration" Grid.Row="4" Grid.ColumnSpan="3" FontSize="30" Text="Duration" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily ="FT" TextColor="Red" ></Label>
+							<Button x:Name="shuffle" x:FieldModifier="public" IsVisible="true" Grid.Row="5" Grid.Column="1" Text="Shuffle" Clicked="shuffle_Clicked" FontFamily="LED"   HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="Red"/>
+							
+							<ImageButton x:Name="playerNext" x:FieldModifier="public" Source="nextplay_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerNext_Clicked"   Grid.Row="6" Grid.Column="2" ></ImageButton>
+							<ImageButton x:Name="playerPlay" x:FieldModifier="public" Source="play_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPlay_Clicked"  Grid.Row="6" Grid.Column="1" ></ImageButton>
+							<ImageButton x:Name="playerPause" x:FieldModifier="public" Source="pause_button.png"  Clicked="playerPause_Clicked" HorizontalOptions="CenterAndExpand" IsVisible="false" Grid.Row="6" Grid.Column="1"></ImageButton>
+							<ImageButton x:Name="playerPrev" x:FieldModifier="public" Source="prev_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPrev_Clicked" Grid.Row="6" Grid.Column="0"></ImageButton>
+							<Button x:Name="Stop" x:FieldModifier="public" IsEnabled="True" IsVisible="false" Grid.Row="7" Grid.Column="0" Text="Stop" Clicked="Stop_Clicked"></Button>
+						</Grid>
+
+					</StackLayout>
+				</ContentPage>
+			</ShellContent>
+		</Tab>
+	</FlyoutItem>
+	<FlyoutItem Title="Settings">
+		<ShellContent ContentTemplate="{DataTemplate pages:PlayerSettings}"></ShellContent>
+	</FlyoutItem>
+</Shell>

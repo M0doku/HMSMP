@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HMSMP.PlayerSettings"
+			 xmlns:pages="clr-namespace:HMSMP">
+    <ContentPage.Content>
+        <StackLayout x:Name="PlayerSettings_Layout" x:FieldModifier="public" >
+			<Grid x:Name="gridPS" x:FieldModifier="public">
+				<Grid.RowDefinitions>
+					<RowDefinition x:Name="folderfindRow" Height="*"/>
+					<RowDefinition x:Name="saveFolderRow" Height="*"/>
+					<RowDefinition x:Name="folderNameRow" Height="*"/>
+					<RowDefinition x:Name="loadSongRow"  Height="*"/>
+					<RowDefinition x:Name="themePickerRow" Height="*"/>
+					<RowDefinition x:Name="buttonsRow" Height="*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Label x:Name="Labl" Grid.Row="0"  Text="Folder for finding songs:" Grid.ColumnSpan="2"  FontFamily="LED" HorizontalOptions="Center"  FontSize="20" TextColor="Red"></Label>
+				<Label x:Name="FindingLabel" Grid.Row="1" Grid.Column="0" Text="Save this path?" FontFamily="LED" HorizontalOptions="StartAndExpand"  FontSize="20" TextColor="Red"/>
+				<Switch x:Name="saveFolderName"  Grid.Column="1" Grid.Row="1" HorizontalOptions="FillAndExpand"></Switch>
+				<Entry x:Name="folderName" Grid.ColumnSpan="2" Grid.Row="2"  FontFamily="LED" HorizontalOptions="StartAndExpand"  FontSize="20" TextColor="Red" Text="/storage/emulated/0/Music"></Entry>
+				<Label x:Name="loadSongs" Grid.ColumnSpan="2" Grid.Row="3" Text="Load music automatically?" FontFamily="LED" HorizontalOptions="Start"  FontSize="20" TextColor="Red"/>
+				<Switch x:Name="loadSongsSwitch" Grid.ColumnSpan="2" Grid.Row="3"></Switch>
+				<Label x:Name="theme" Text="Theme:" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="LED" HorizontalOptions="Start" FontSize="20" TextColor="Red"></Label>
+				<Picker x:Name="themePicker" WidthRequest="100"  SelectedItem="Black" Title="Theme" HorizontalTextAlignment="Center" TitleColor="Red" Grid.Row="4" FontFamily="LED" HorizontalOptions="CenterAndExpand"  FontSize="20" TextColor="Red"></Picker>
+				<Button x:Name="SaveSettings" Grid.Column="0"   Clicked="SaveSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Save Settings"  FontFamily="LED" FontSize="15" TextColor="Red"/>
+				<Button x:Name="ResetSettings" Grid.Column="1"  Clicked="ResetSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Reset Settings"  FontFamily="LED" FontSize="15" TextColor="Red"/>
+			</Grid>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

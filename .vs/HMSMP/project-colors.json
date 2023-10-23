@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "44f26d67-9604-4950-a18d-6e03962cad19": {
+      "ProjectGuid": "44f26d67-9604-4950-a18d-6e03962cad19",
+      "DisplayName": "HMSMP",
+      "ColorIndex": 0
+    },
+    "d10b54b0-c6c8-4582-8a97-54b704fc37ba": {
+      "ProjectGuid": "d10b54b0-c6c8-4582-8a97-54b704fc37ba",
+      "DisplayName": "HMSMP.Android",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

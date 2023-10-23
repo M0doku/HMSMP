@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "o0xCRywoA7FIBXyuthuZ7JNt9SKEAsWI6NnPGzdTXN3VHz96EDO4Dyzak4o0RFPoKnZpisoZfFGGG0UlwQDDJQ==",
+  "success": true,
+  "projectFilePath": "D:\\Modoku_29_09\\HMSMP\\HMSMP\\HMSMP.iOS\\HMSMP.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.mediamanager\\1.1.1\\plugin.mediamanager.1.1.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.mediamanager.forms\\1.1.1\\plugin.mediamanager.forms.1.1.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\plugin.permissions\\6.0.1\\plugin.permissions.6.0.1.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.communitytoolkit\\2.0.0\\xamarin.communitytoolkit.2.0.0.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
+    "C:\\Users\\Modoku\\.nuget\\packages\\xamarin.forms\\5.0.0.2478\\xamarin.forms.5.0.0.2478.nupkg.sha512"
+  ],
+  "logs": []
+}

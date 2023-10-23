@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HMSMP.songList"
+			 Appearing="ContentPage_Appearing">
+    <ContentPage.Content>
+        <StackLayout x:Name="SL" Background="White" x:FieldModifier="public"> 
+            <Label x:Name="songList_label" Grid.Row="0"  Text="Song List" FontSize="20" FontFamily="LED" HorizontalTextAlignment="Center"   TextColor="Red" Padding="0,10,0,0" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+               <Label x:Name="labelPlaySongs" x:FieldModifier="public"  Grid.Row="0" Text="Play only this songs?" Background="{Binding Color}" FontSize="20" FontFamily="LED" HorizontalOptions="StartAndExpand" TextColor="Red" Margin="0" Padding="5,0,0,0"></Label>
+                <Switch x:Name="switchNewPlaylist" Grid.Row="0" Grid.Column="1" Margin="0,0,0,15"></Switch>
+                
+            </Grid>
+            <SearchBar x:Name="searchSongs" x:FieldModifier="public" Margin="0,0,0,0" TextChanged="searchSongs_TextChanged" Placeholder="Find..." BackgroundColor="White" PlaceholderColor="Red" TextColor="Red" FontFamily="LED"  />
+
+
+            <CollectionView x:Name="songList_CV"  ItemsLayout="VerticalList" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" x:Name="currentTrack" Grid.Column="0" WidthRequest="300"  Clicked="Title_Clicked" Margin="0,-10,0,0" FontSize="15" FontFamily="LED" BackgroundColor="{Binding Color}" TextColor="Red"  HorizontalOptions="Start">
+                                <Button.Text>
+                                    <MultiBinding x:Name="stringBind" x:FieldModifier="public" StringFormat="{}{0}
+                                                  {1}">
+                                        <Binding Path = "Title"/>
+                                        <Binding Path= "Artist"/>
+                                    </MultiBinding>
+                                </Button.Text>
+                            </Button>
+                            
+                            <Label Grid.Row="0" x:Name="trackDuration" Grid.Column="1" FontSize="15" FontFamily="LED"  VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{Binding Color}" TextColor="Red" Text="{Binding Duration}"></Label>
+                            <Label Grid.Row="0" Grid.Column="1" FontSize="15" FontFamily="LED"   TextColor="Red" Text="{Binding Number}" BackgroundColor="{Binding Color}" IsVisible="false"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
