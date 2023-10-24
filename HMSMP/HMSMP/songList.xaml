@@ -4,7 +4,7 @@
              x:Class="HMSMP.songList"
 			 Appearing="ContentPage_Appearing">
     <ContentPage.Content>
-        <StackLayout x:Name="SL" Background="White" x:FieldModifier="public"> 
+        <StackLayout x:Name="SL"  x:FieldModifier="public"> 
             <Label x:Name="songList_label" Grid.Row="0"  Text="Song List" FontSize="20" FontFamily="LED" HorizontalTextAlignment="Center"   TextColor="Red" Padding="0,10,0,0" />
             <Grid>
                 <Grid.RowDefinitions>

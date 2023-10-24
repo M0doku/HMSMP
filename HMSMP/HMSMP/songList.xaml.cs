@@ -66,16 +66,16 @@ namespace HMSMP
 
 			}
         }
-        private void themesPicker()
+        public void themesPicker()
         {
             if (PlayerSettings.currentTheme == "White")
             {
-                SL.Background = Xamarin.Forms.Color.White;
+               SL.BackgroundColor = Xamarin.Forms.Color.White;
 				
 			}
             else if (PlayerSettings.currentTheme == "Black")
             {
-                SL.Background = Xamarin.Forms.Color.Black;
+                SL.BackgroundColor = Xamarin.Forms.Color.Black;
                 
             }
         }

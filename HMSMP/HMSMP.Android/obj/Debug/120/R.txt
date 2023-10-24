@@ -1964,7 +1964,7 @@ int drawable exo_notification_rewind 0x7f07008b
 int drawable exo_notification_small_icon 0x7f07008c
 int drawable exo_notification_stop 0x7f07008d
 int drawable hmp_logo 0x7f07008e
-int drawable hmp_logo1 0x7f07008f
+int drawable hmp_logo_wb 0x7f07008f
 int drawable ic_arrow_down_24dp 0x7f070090
 int drawable ic_clock_black_24dp 0x7f070091
 int drawable ic_keyboard_black_24dp 0x7f070092

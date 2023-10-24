@@ -6,11 +6,24 @@
 	   x:Name="shellMainPage"
 	   x:FieldModifier="public"
 	   Shell.NavBarIsVisible="False"
-	   FlyoutBackgroundColor="Black"
-	   
+	    
 	   >
-	
-	<FlyoutItem Title="MediaPlayer">
+	<Shell.FlyoutHeaderTemplate>
+		<DataTemplate>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Image x:Name="shellImage" x:FieldModifier="public" Source="hmp_logo_wb.png" HeightRequest="220" Grid.Row="0"></Image>
+				<Label Text="HMSMP v0.1.1a" FontFamily="LED" FontSize="30" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10" Grid.Row="0"/>
+			</Grid>
+			
+		</DataTemplate>
+	</Shell.FlyoutHeaderTemplate>
+	<FlyoutItem Title="Media Player">
 		<Tab>
 			<ShellContent  Appearing="ContentPage_Appearing">
 
@@ -27,6 +40,7 @@
 						<Grid>
 							<Grid.GestureRecognizers>
 								<SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped_1"/>
+								<SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped" />
 							</Grid.GestureRecognizers>
 							<Grid.RowDefinitions>
 								<RowDefinition x:FieldModifier="public" x:Name="buttonRow" Height="*"/>

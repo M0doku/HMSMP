@@ -27297,7 +27297,7 @@ namespace HMSMP.Droid
 			public const int hmp_logo = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int hmp_logo1 = 2131165327;
+			public const int hmp_logo_wb = 2131165327;
 			
 			// aapt resource value: 0x7F070097
 			public const int icon = 2131165335;

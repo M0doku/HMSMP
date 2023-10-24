@@ -41,7 +41,7 @@ using static HMSMP.Droid.MainActivity;
 [assembly: Xamarin.Forms.Dependency(typeof(MainActivity.themeChange))]
 namespace HMSMP.Droid
 {
-    [Activity(Label = "HMSMP", Icon = "@drawable/hmp_logo1", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "HMSMP", Icon = "@drawable/hmp_logo", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static string CHANNEL_ID_1 = "CHANNEL_1";

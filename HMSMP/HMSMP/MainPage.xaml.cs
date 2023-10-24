@@ -45,8 +45,8 @@ namespace HMSMP
         public static string title_android;
         public bool isAutoPlay = false;
         public bool isFirstLaunch = true;
-        public double phoneHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
-        public double phoneWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+        public static double phoneHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
+        public static double phoneWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
 
 		public MainPage()
         {
@@ -357,7 +357,6 @@ namespace HMSMP
 				currentPosition(CrossMediaManager.Current.Position);
 				currentPlayerState(CrossMediaManager.Current.State);
 				NextSong();
-                
                
 				indexCurrentSong = CrossMediaManager.Current.Queue.CurrentIndex;
                 //CrossMediaManager.Current.Notification.Enabled = false;

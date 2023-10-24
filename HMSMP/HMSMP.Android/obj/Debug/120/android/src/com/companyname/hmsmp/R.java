@@ -10148,7 +10148,7 @@ public final class R {
     public static final int exo_notification_small_icon=0x7f07008c;
     public static final int exo_notification_stop=0x7f07008d;
     public static final int hmp_logo=0x7f07008e;
-    public static final int hmp_logo1=0x7f07008f;
+    public static final int hmp_logo_wb=0x7f07008f;
     public static final int ic_arrow_down_24dp=0x7f070090;
     public static final int ic_clock_black_24dp=0x7f070091;
     public static final int ic_keyboard_black_24dp=0x7f070092;

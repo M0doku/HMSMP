@@ -22,12 +22,11 @@ namespace HMSMP
         public static bool loadMusic;
         public static string currentTheme;
         string Orientation;
-		public double phoneHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
-		public double phoneWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
+	
 		public PlayerSettings()
         {
             InitializeComponent();
-			DeviceDisplay.MainDisplayInfoChanged += updateLayout;
+
 			var switchFolder = Preferences.Get("switchFolder", false);
             loadMusic = Preferences.Get("loadMusic", false);
             currentTheme = themePicker.SelectedItem.ToString();
@@ -45,9 +44,11 @@ namespace HMSMP
                 themePicker.SelectedItem = Preferences.Get("currentTheme", currentTheme);
             }
             else { themePicker.SelectedItem = currentTheme; }
-            themePicker.SelectedIndexChanged += themePickerTheme_Changed;
+			DeviceDisplay.MainDisplayInfoChanged += updateLayout;
+			themePicker.SelectedIndexChanged += themePickerTheme_Changed;
 			launchTheme();
             startLayout();	
+
             
         }
         void startLayout()
@@ -55,22 +56,22 @@ namespace HMSMP
 			Orientation = DeviceDisplay.MainDisplayInfo.Orientation.ToString();
 			if (Orientation == "Portrait")
 			{
-				folderfindRow.Height = phoneHeight * 0.05;
-                saveFolderRow.Height = phoneHeight * 0.05;   
-				folderNameRow.Height = phoneHeight * 0.05;
-				loadSongRow.Height = phoneHeight * 0.05;
-				themePickerRow.Height = phoneHeight * 0.05;
-				buttonsRow.Height = phoneHeight * 0.6;
+				folderfindRow.Height = MainPage.phoneHeight * 0.05;
+                saveFolderRow.Height = MainPage.phoneHeight * 0.05;   
+				folderNameRow.Height = MainPage.phoneHeight * 0.05;
+				loadSongRow.Height = MainPage.phoneHeight * 0.05;
+				themePickerRow.Height = MainPage.phoneHeight * 0.05;
+				buttonsRow.Height = MainPage.phoneHeight * 0.6;
 				themePicker.HorizontalOptions = LayoutOptions.EndAndExpand;
 			}
 			else if (Orientation == "Landscape")
 			{
-				folderfindRow.Height = phoneWidth * 0.1;
-				saveFolderRow.Height = phoneHeight * 0.05;
-				folderNameRow.Height = phoneWidth * 0.12;
-				loadSongRow.Height = phoneWidth * 0.1;
-				themePickerRow.Height = phoneWidth * 0.12;
-				buttonsRow.Height = phoneWidth * 0.25;
+				folderfindRow.Height = MainPage.phoneWidth * 0.1;
+				saveFolderRow.Height = MainPage.phoneHeight * 0.05;
+				folderNameRow.Height = MainPage.phoneWidth * 0.12;
+				loadSongRow.Height = MainPage.phoneWidth * 0.1;
+				themePickerRow.Height = MainPage.phoneWidth * 0.12;
+				buttonsRow.Height = MainPage.phoneWidth * 0.25;
 				themePicker.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			}
 		}
@@ -79,33 +80,37 @@ namespace HMSMP
 			Orientation = DeviceDisplay.MainDisplayInfo.Orientation.ToString();
 			if (Orientation == "Portrait")
 			{
-				folderfindRow.Height = phoneHeight * 0.05;
-				saveFolderRow.Height = phoneHeight * 0.05;
-				folderNameRow.Height = phoneHeight * 0.05;
-				loadSongRow.Height = phoneHeight * 0.05;
-				themePickerRow.Height = phoneHeight * 0.05;
-				buttonsRow.Height = phoneHeight * 0.6;
+				folderfindRow.Height = MainPage.phoneHeight * 0.05;
+				saveFolderRow.Height = MainPage.phoneHeight * 0.05;
+				folderNameRow.Height = MainPage.phoneHeight * 0.05;
+				loadSongRow.Height = MainPage.phoneHeight * 0.05;
+				themePickerRow.Height = MainPage.phoneHeight * 0.05;
+				buttonsRow.Height = MainPage.phoneHeight * 0.6;
                 themePicker.HorizontalOptions = LayoutOptions.EndAndExpand;
 			}
 			else if (Orientation == "Landscape")
 			{
-				folderfindRow.Height = phoneWidth * 0.1;
-                saveFolderRow.Height = phoneHeight * 0.05;
-				folderNameRow.Height = phoneWidth * 0.12;
-				loadSongRow.Height = phoneWidth * 0.1;
-				themePickerRow.Height = phoneWidth * 0.12;
-				buttonsRow.Height = phoneWidth * 0.25;
+				folderfindRow.Height = MainPage.phoneWidth * 0.1;
+                saveFolderRow.Height = MainPage.phoneHeight * 0.05;
+				folderNameRow.Height = MainPage.phoneWidth * 0.12;
+				loadSongRow.Height = MainPage.phoneWidth * 0.1;
+				themePickerRow.Height = MainPage.phoneWidth * 0.12;
+				buttonsRow.Height = MainPage.phoneWidth * 0.25;
                 themePicker.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			}
 		}
       
         private void themePickerTheme_Changed(object sender, EventArgs e)   
         {
+
             currentTheme = themePicker.SelectedItem.ToString();
-            var mainpage = Application.Current.MainPage;
+			Preferences.Set("currentTheme", currentTheme);
+			var mainpage = Application.Current.MainPage;
+            var songlist = new songList();
 			Xamarin.Forms.DependencyService.Get<IThemeChange>().changeTheme();
 			if (currentTheme == "White")
             {
+				(mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.White;
 				PlayerSettings_Layout.BackgroundColor = Xamarin.Forms.Color.White;
 				SaveSettings.BackgroundColor = Xamarin.Forms.Color.White;
 				ResetSettings.BackgroundColor = Xamarin.Forms.Color.White;
@@ -122,7 +127,7 @@ namespace HMSMP
 			}
             else if(currentTheme == "Black")
             {
-				
+				(mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.Black;
 				PlayerSettings_Layout.BackgroundColor = Xamarin.Forms.Color.Black;
 				SaveSettings.BackgroundColor = Xamarin.Forms.Color.Black;
 				ResetSettings.BackgroundColor = Xamarin.Forms.Color.Black;
@@ -159,7 +164,7 @@ namespace HMSMP
             Preferences.Set("folderName", folderName.Text);
             Preferences.Set("switchFolder", saveFolderName.IsToggled);
             Preferences.Set("loadMusic", loadSongsSwitch.IsToggled);
-            Preferences.Set("currentTheme", currentTheme);
+            
         }
         private void ResetSettings_Clicked(object sender, EventArgs e)
         {

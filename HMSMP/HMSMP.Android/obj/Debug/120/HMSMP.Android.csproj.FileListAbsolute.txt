@@ -66,7 +66,6 @@ D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\songlist.pn
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\update.png
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\icon.png
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\hmp_logo.png
-D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\hmp_logo1.png
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\uploadflags.txt
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\resolvedassemblies.hash
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\assets\ExoPlayer.Core.dll
@@ -774,3 +773,4 @@ D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\mono\com\goo
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEditTextAttachedListenerImplementor.java
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEndIconChangedListenerImplementor.java
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\xamarin\essentials\fileProvider.java
+D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\hmp_logo_wb.png
