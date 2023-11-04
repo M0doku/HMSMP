@@ -118,7 +118,6 @@ namespace HMSMP
 				(mainpage as MainPage).Find_music.Background = Brush.White;
                 (mainpage as MainPage).music_List.Background = Brush.White;
                 (mainpage as MainPage).Settings.Background = Brush.White;
-                (mainpage as MainPage).shuffle.Background = Brush.White;
                 (mainpage as MainPage).playerNext.Background = Brush.White;
                 (mainpage as MainPage).playerPause.Background = Brush.White;
                 (mainpage as MainPage).playerPlay.Background = Brush.White;
@@ -135,7 +134,6 @@ namespace HMSMP
 				(mainpage as MainPage).Find_music.Background = Brush.Black;
 				(mainpage as MainPage).music_List.Background = Brush.Black;
 				(mainpage as MainPage).Settings.Background = Brush.Black;
-				(mainpage as MainPage).shuffle.Background = Brush.Black;
 				(mainpage as MainPage).playerNext.Background = Brush.Black;
 				(mainpage as MainPage).playerPause.Background = Brush.Black;
 				(mainpage as MainPage).playerPlay.Background = Brush.Black;

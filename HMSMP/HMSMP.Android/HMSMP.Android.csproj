@@ -145,5 +145,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\hmp_logo_wb.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\random_button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

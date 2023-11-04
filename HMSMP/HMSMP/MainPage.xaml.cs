@@ -22,13 +22,13 @@ using TagLib;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
 
 namespace HMSMP
 {
     public partial class MainPage : Shell
     {
         public static int indexCurrentSong;
-        ObservableCollection<String> TrackList = new ObservableCollection<String>();
         public static int randomTrack;
         public static bool isRandom;
         //IEnumerable<string> songs;
@@ -45,6 +45,8 @@ namespace HMSMP
         public static string title_android;
         public bool isAutoPlay = false;
         public bool isFirstLaunch = true;
+        public bool isChanged = false;
+        public int nextSong;
         public static double phoneHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
         public static double phoneWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
 
@@ -64,10 +66,8 @@ namespace HMSMP
             songList SL = new songList();
             DeviceDisplay.MainDisplayInfoChanged += updateLayout;            
             themesPicker();
-            startLayout();
-			songList.Prepare();
+            startLayout();         
 		}
-
 		private async void checkPermissions()
         {
             Task checkStatus = new Task(async () =>
@@ -114,7 +114,6 @@ namespace HMSMP
                 Find_music.Background = Brush.White;
                 music_List.Background = Brush.White;
                 Settings.Background = Brush.White;
-                shuffle.Background = Brush.White;
 				playerNext.BackgroundColor = Xamarin.Forms.Color.White;
 				playerPause.BackgroundColor = Xamarin.Forms.Color.White;
                 playerPlay.BackgroundColor = Xamarin.Forms.Color.White;
@@ -132,7 +131,6 @@ namespace HMSMP
 				Find_music.Background = Brush.Black;
 				music_List.Background = Brush.Black;
 				Settings.Background = Brush.Black;
-				shuffle.Background = Brush.Black;
 				playerNext.BackgroundColor = Xamarin.Forms.Color.Black;
 				playerPause.BackgroundColor = Xamarin.Forms.Color.Black;
 				playerPlay.BackgroundColor = Xamarin.Forms.Color.Black;
@@ -215,35 +213,43 @@ namespace HMSMP
 
             if (((oldTime + 2 < newTime) || (newTime + 2 < oldTime)) && CrossMediaManager.Current.Position.TotalSeconds > 1)
             {
-
-                slider_Position.Value = newTime;
+				
+				slider_Position.Value = newTime;
                 string d = newTime.ToString();
                 ts = TimeSpan.FromSeconds(newTime);
                 await CrossMediaManager.Current.SeekTo(ts);
                 ts = TimeSpan.Zero;
-
-
+                if(isRandom == true)
+                {
+					randSong();
+				}
             }
+            
             double totalSeconds = CrossMediaManager.Current.Duration.TotalSeconds;
-            if (newTime > (totalSeconds - 2)) 
+            if (newTime > (totalSeconds - 1)) 
             {
-				
-                
 			}
 		}
         private void currentPosition_Changed(object sender, MediaManager.Playback.PositionChangedEventArgs e)
         {
-
-            Device.BeginInvokeOnMainThread(() =>
+            if(songs.Count > 0)
             {
-                currentPosition(e.Position);
-            });
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					currentPosition(e.Position);
+				});
+               if(isRandom == true)
+                {
+					
+				}
+				
+			}
+           
         }
         private void currentPlayerState(MediaPlayerState playerState)
         {
             if (playerState == MediaManager.Player.MediaPlayerState.Loading)
             {
-				
 				slider_Position.Value = 0;
 			}
             else if (playerState == MediaManager.Player.MediaPlayerState.Playing && CrossMediaManager.Current.Duration.TotalSeconds > 0)
@@ -266,7 +272,7 @@ namespace HMSMP
 		}
         private void songIsFinished(object sender, MediaItemEventArgs e)
         {
-         
+
         }
         private void currentPlayerState_Changed(object sender, StateChangedEventArgs e)
         {
@@ -312,6 +318,14 @@ namespace HMSMP
         {           
           await findMusic();
         }
+        private void randSong()
+        {
+            
+            Random rand = new Random();
+            nextSong = rand.Next(0, songs.Count - 1);
+        
+         
+		}
         private static IEnumerable<string> rand(IList<string> enumerable)
         {
             Random rand = new Random();
@@ -352,7 +366,6 @@ namespace HMSMP
         {
             if(songs.Count > 0)
             {
-
 				slider_Position.Value = 0;
 				currentPosition(CrossMediaManager.Current.Position);
 				currentPlayerState(CrossMediaManager.Current.State);
@@ -482,6 +495,12 @@ namespace HMSMP
 
                     CrossMediaManager.Current.PlayNext();
                     CrossMediaManager.Current.Play();
+              /*  if(isRandom == true)
+                {
+					randSong();
+					CrossMediaManager.Current.PlayQueueItem(nextSong);
+                    CrossMediaManager.Current.Play();
+				}*/
                 }
         }
         private void playerPrev_Clicked(object sender, EventArgs e)
@@ -567,5 +586,90 @@ namespace HMSMP
            await Navigation.PushAsync(new songList());
 
 		}
-    }
+
+		private void random_Clicked(object sender, EventArgs e)
+		{
+            if (isRandom == false && PlayerSettings.currentTheme == "White")
+            {
+                isRandom = true;
+                createRandomPlaylist();
+
+
+				randomButton.BorderColor = Xamarin.Forms.Color.Black;
+            }
+            else if (isRandom == false && PlayerSettings.currentTheme == "Black")
+            {
+                isRandom = true;
+				createRandomPlaylist();
+				randomButton.BorderColor = Xamarin.Forms.Color.White;
+            }
+            else if (isRandom == true && PlayerSettings.currentTheme == "White")
+            {
+                isRandom = false;
+                randomButton.BorderColor = Xamarin.Forms.Color.White;
+            }
+            else if(isRandom == true && PlayerSettings.currentTheme == "Black")
+            {
+                isRandom = false;
+                randomButton.BorderColor = Xamarin.Forms.Color.Black;
+            }
+		}
+        public IList<IMediaItem> Randomize(IList<IMediaItem> array)
+        {
+            Random random = new Random();
+            Parallel.For(0, array.Count, i =>
+            {
+				int r = random.Next(i, array.Count);
+				(array[r], array[i]) = (array[i], array[r]);
+			});           
+            return array;
+        }
+        public void createRandomPlaylist()
+        {
+				int currentSongIndex = 0;
+				IList<IMediaItem> items = CrossMediaManager.Current.Queue.MediaItems.Cast<IMediaItem>().ToList();
+
+				bool isSongFinded = false;
+				int mediaCount = CrossMediaManager.Current.Queue.Count();
+				int playingSongIndex = indexCurrentSong;
+				IMediaItem currentSong = CrossMediaManager.Current.Queue.Current;
+				Console.WriteLine("MEDIACOUNT :" + mediaCount);
+				Stopwatch stopwatch = new Stopwatch();
+				stopwatch.Start();
+				for (int i = 0; i < mediaCount; i++)
+				{
+					if (i == playingSongIndex)
+					{
+						isSongFinded = true;
+						continue;
+
+					}
+					else if (isSongFinded == false)
+					{
+						CrossMediaManager.Current.Queue.RemoveAt(0);
+						currentSongIndex++;
+
+					}
+					else if (isSongFinded == true)
+					{
+						CrossMediaManager.Current.Queue.RemoveAt(1);
+						currentSongIndex++;
+
+					}
+				}
+				IList<IMediaItem> randomSongs = Randomize(items);
+				randomSongs.Remove(currentSong);
+				int randomSongsCount = randomSongs.Count;
+
+				for (int i = 0; i < randomSongsCount; i++)
+				{
+
+					CrossMediaManager.Current.Queue.Add(randomSongs[i]);
+
+				}
+				stopwatch.Stop();
+				Console.WriteLine("ELAPSEDTIME: " + stopwatch.ElapsedMilliseconds);
+           
+        }
+	}
 }

@@ -30,6 +30,9 @@ namespace HMSMP
         static IEnumerable<Song> playList;
         IEnumerable<string> songs;
         string color;
+        string Orientation;
+		private static songList instance;
+        public bool isAppearing = false;
 		public static songList Instance
 		{
 			get
@@ -53,18 +56,36 @@ namespace HMSMP
 			
 			color = PlayerSettings.currentTheme;
 			themesPicker();
-           
-            CrossMediaManager.Current.MediaItemChanged += mediaItem_Changed;
+            
+			CrossMediaManager.Current.MediaItemChanged += mediaItem_Changed;
+            CrossMediaManager.Current.MediaItemFinished += mediaItem_Finished;
+		}
+
+		private void mediaItem_Finished(object sender, MediaItemEventArgs e)
+		{
+			songScroll();
+		}
+
+		private void songScroll()
+        {
+			Orientation = DeviceDisplay.MainDisplayInfo.Orientation.ToString();
+			if (CrossMediaManager.Current.Queue.MediaItems.Count > 0)
+			{
+				if (Orientation == "Portrait")
+				{
+					int song = MainPage.indexCurrentSong;
+					songList_CV.ScrollTo(song + 8, animate: false);
+				}
+				else if (Orientation == "Landscape")
+				{
+					int song = MainPage.indexCurrentSong;
+					songList_CV.ScrollTo(song + 2, animate: false);
+				}
+			}
 		}
         private void mediaItem_Changed(object sender, MediaItemEventArgs e)
-        {
-            if (CrossMediaManager.Current.Queue.MediaItems.Count > 0)
-            {
-				int song = MainPage.indexCurrentSong;
-				songList_CV.ScrollTo(song + 8, animate: false);
-
-
-			}
+        {          
+            songScroll();
         }
         public void themesPicker()
         {
@@ -160,9 +181,8 @@ namespace HMSMP
                     Duration = duration,
                     Number = i + 1,
                     Color = color
-                });
-                
-            }
+                });               
+            }         
             songList_CV.ItemsSource = list;
         }
         private async void Title_Tapped(object sender, EventArgs e)
@@ -232,13 +252,33 @@ namespace HMSMP
 			if (CrossMediaManager.Current.Queue.MediaItems.Count > 0)
 			{
 				songPlayList();
+                
 				int song = MainPage.indexCurrentSong;
-				songList_CV.ScrollTo(song, animate: false);
-               
+                isAppearing = true;
 
-            }
+			}
 		}
-        private static songList instance;
-       
+
+		private void ContentPage_LayoutChanged(object sender, EventArgs e)
+		{
+            if(isAppearing == true)
+            {
+				Orientation = DeviceDisplay.MainDisplayInfo.Orientation.ToString();
+				if (CrossMediaManager.Current.Queue.MediaItems.Count > 0)
+				{
+					if (Orientation == "Portrait")
+					{
+						int song = MainPage.indexCurrentSong;
+						songList_CV.ScrollTo(song, animate: false);
+					}
+					else if (Orientation == "Landscape")
+					{
+						int song = MainPage.indexCurrentSong;
+						songList_CV.ScrollTo(song + 2, animate: false);
+					}
+				}
+			}
+            isAppearing = false;
+		}
 	}
 }

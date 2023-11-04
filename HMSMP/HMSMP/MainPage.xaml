@@ -68,8 +68,8 @@
 							<Image x:Name="Image_artist" Grid.Row="2"  HeightRequest="100" WidthRequest="200"></Image>
 							<Slider x:Name="slider_Position"  Grid.Row="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Minimum="0" MinimumTrackColor="Red" ThumbColor="Red" Value="0" ></Slider>
 							<Label x:Name="playerDuration" Grid.Row="4" Grid.ColumnSpan="3" FontSize="30" Text="Duration" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily ="FT" TextColor="Red" ></Label>
-							<Button x:Name="shuffle" x:FieldModifier="public" IsVisible="true" Grid.Row="5" Grid.Column="1" Text="Shuffle" Clicked="shuffle_Clicked" FontFamily="LED"   HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="Red"/>
 							
+							<ImageButton x:Name="randomButton" x:FieldModifier="public" Grid.Row="5"  HorizontalOptions="StartAndExpand" BorderWidth="0.1" Margin="20,0,0,0" BackgroundColor="Black"  Grid.ColumnSpan="2"  Source="random_button" Clicked="random_Clicked"></ImageButton>
 							<ImageButton x:Name="playerNext" x:FieldModifier="public" Source="nextplay_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerNext_Clicked"   Grid.Row="6" Grid.Column="2" ></ImageButton>
 							<ImageButton x:Name="playerPlay" x:FieldModifier="public" Source="play_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPlay_Clicked"  Grid.Row="6" Grid.Column="1" ></ImageButton>
 							<ImageButton x:Name="playerPause" x:FieldModifier="public" Source="pause_button.png"  Clicked="playerPause_Clicked" HorizontalOptions="CenterAndExpand" IsVisible="false" Grid.Row="6" Grid.Column="1"></ImageButton>

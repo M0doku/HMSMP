@@ -774,3 +774,4 @@ D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\mono\com\goo
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEndIconChangedListenerImplementor.java
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\android\src\xamarin\essentials\fileProvider.java
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\hmp_logo_wb.png
+D:\Modoku_29_09\HMSMP\HMSMP\HMSMP.Android\obj\Debug\120\res\drawable\random_button.png
