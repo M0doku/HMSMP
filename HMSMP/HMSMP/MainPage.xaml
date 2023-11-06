@@ -18,7 +18,7 @@
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 				<Image x:Name="shellImage" x:FieldModifier="public" Source="hmp_logo_wb.png" HeightRequest="220" Grid.Row="0"></Image>
-				<Label Text="HMSMP v0.1.1a" FontFamily="LED" FontSize="30" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10" Grid.Row="0"/>
+				<Label Text="HMSMP v0.1.3" FontFamily="MLCD" FontSize="20" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10" Grid.Row="0"/>
 			</Grid>
 			
 		</DataTemplate>
@@ -49,6 +49,7 @@
 								<RowDefinition x:FieldModifier="public" x:Name="sliderRow" Height="*"/>
 								<RowDefinition x:FieldModifier="public" x:Name="durationRow" Height="*"/>
 								<RowDefinition x:FieldModifier="public" x:Name="shuffleRow" Height="*"/>
+								<RowDefinition x:FieldModifier="public" x:Name="aboveButtonsRow" Height="*"/>
 								<RowDefinition x:FieldModifier="public" x:Name="buttonsRow" Height="*"/>
 							</Grid.RowDefinitions>
 							<Grid.ColumnDefinitions>
@@ -56,25 +57,15 @@
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="*"/>
 							</Grid.ColumnDefinitions>
-							
-							<Button x:Name="Find_music" IsVisible="false" x:FieldModifier="public" Grid.Column="0" Grid.Row="0" HorizontalOptions="StartAndExpand"  Text="Update List" FontFamily="LED" TextColor="Red" Clicked="Find_music_Clicked"/>
-							<Button x:Name="music_List" IsVisible="false" x:FieldModifier="public" Grid.Column="2" Grid.Row="0" HorizontalOptions="CenterAndExpand" Text="Music List" FontFamily="LED" TextColor="Red"  Clicked="songList_Clicked"></Button>
-							<Button x:Name="Settings" IsVisible="false" x:FieldModifier="public" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" Text="Settings" FontFamily="LED"  TextColor="Red" Clicked="Settings_Clicked"/>
-
-							<Label x:Name="Label_song"   HorizontalOptions="Center" Text="" FontFamily="Courier New" FontSize="20" TextColor="Red"></Label>
-							<Label x:Name="Label_songName" x:FieldModifier="public" Grid.Row="1" Grid.ColumnSpan="3" Text="---" FontFamily="LED" HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="Red" HorizontalTextAlignment="Center"></Label>
-							<Label x:Name="Label_artist" x:FieldModifier="public" Grid.Row="2" Grid.ColumnSpan="3" Text="---" FontFamily="LED"  HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="Red" HorizontalTextAlignment="Center"></Label>
-							<Label x:Name="Label_test" IsVisible="false"  Text="test" Grid.Row="7" FontFamily="FT" FontSize="20"  TextColor="Red" ></Label>
-							<Image x:Name="Image_artist" Grid.Row="2"  HeightRequest="100" WidthRequest="200"></Image>
+							<Label x:Name="Label_songName"  x:FieldModifier="public" Grid.Row="1" Grid.ColumnSpan="3"  Text="---" FontFamily="MLCD" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="Red" HorizontalTextAlignment="Center"></Label>
+							<Label x:Name="Label_artist" x:FieldModifier="public" Grid.Row="2" Grid.ColumnSpan="3"  Text="---" FontFamily="MLCD"  HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="Red" HorizontalTextAlignment="Center"></Label>
 							<Slider x:Name="slider_Position"  Grid.Row="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Minimum="0" MinimumTrackColor="Red" ThumbColor="Red" Value="0" ></Slider>
-							<Label x:Name="playerDuration" Grid.Row="4" Grid.ColumnSpan="3" FontSize="30" Text="Duration" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily ="FT" TextColor="Red" ></Label>
-							
-							<ImageButton x:Name="randomButton" x:FieldModifier="public" Grid.Row="5"  HorizontalOptions="StartAndExpand" BorderWidth="0.1" Margin="20,0,0,0" BackgroundColor="Black"  Grid.ColumnSpan="2"  Source="random_button" Clicked="random_Clicked"></ImageButton>
-							<ImageButton x:Name="playerNext" x:FieldModifier="public" Source="nextplay_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerNext_Clicked"   Grid.Row="6" Grid.Column="2" ></ImageButton>
-							<ImageButton x:Name="playerPlay" x:FieldModifier="public" Source="play_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPlay_Clicked"  Grid.Row="6" Grid.Column="1" ></ImageButton>
-							<ImageButton x:Name="playerPause" x:FieldModifier="public" Source="pause_button.png"  Clicked="playerPause_Clicked" HorizontalOptions="CenterAndExpand" IsVisible="false" Grid.Row="6" Grid.Column="1"></ImageButton>
-							<ImageButton x:Name="playerPrev" x:FieldModifier="public" Source="prev_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPrev_Clicked" Grid.Row="6" Grid.Column="0"></ImageButton>
-							<Button x:Name="Stop" x:FieldModifier="public" IsEnabled="True" IsVisible="false" Grid.Row="7" Grid.Column="0" Text="Stop" Clicked="Stop_Clicked"></Button>
+							<Label x:Name="playerDuration" Grid.Row="4" Grid.ColumnSpan="3" FontSize="20" Text="Duration" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily ="MLCD" TextColor="Red" ></Label>
+							<ImageButton x:Name="randomButton" x:FieldModifier="public" Grid.Row="5"  HorizontalOptions="StartAndExpand" BorderWidth="1" Margin="20,0,0,0" BackgroundColor="Black"  Grid.ColumnSpan="2"  Source="random_button" Clicked="random_Clicked"></ImageButton>
+							<ImageButton x:Name="playerNext"  x:FieldModifier="public" Source="playnext_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerNext_Clicked"   Grid.Row="7" Grid.Column="2" HeightRequest="50" ></ImageButton>
+							<ImageButton x:Name="playerPlay" x:FieldModifier="public" Source="play_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPlay_Clicked"  Grid.Row="7" Grid.Column="1" ></ImageButton>
+							<ImageButton x:Name="playerPause" x:FieldModifier="public" Source="pause_button.png"  Clicked="playerPause_Clicked" HorizontalOptions="CenterAndExpand" IsVisible="false" Grid.Row="7" Grid.Column="1"></ImageButton>
+							<ImageButton x:Name="playerPrev" x:FieldModifier="public" Source="playprev_button.png" HorizontalOptions="CenterAndExpand" Clicked="playerPrev_Clicked" Grid.Row="7" Grid.Column="0"></ImageButton>
 						</Grid>
 
 					</StackLayout>

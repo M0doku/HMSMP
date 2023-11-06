@@ -25,8 +25,7 @@ namespace HMSMP
 	
 		public PlayerSettings()
         {
-            InitializeComponent();
-
+            InitializeComponent();		    
 			var switchFolder = Preferences.Get("switchFolder", false);
             loadMusic = Preferences.Get("loadMusic", false);
             currentTheme = themePicker.SelectedItem.ToString();
@@ -47,9 +46,7 @@ namespace HMSMP
 			DeviceDisplay.MainDisplayInfoChanged += updateLayout;
 			themePicker.SelectedIndexChanged += themePickerTheme_Changed;
 			launchTheme();
-            startLayout();	
-
-            
+            startLayout();	    
         }
         void startLayout()
         {
@@ -98,31 +95,29 @@ namespace HMSMP
 				buttonsRow.Height = MainPage.phoneWidth * 0.25;
                 themePicker.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			}
-		}
-      
+		}    
         private void themePickerTheme_Changed(object sender, EventArgs e)   
         {
 
             currentTheme = themePicker.SelectedItem.ToString();
 			Preferences.Set("currentTheme", currentTheme);
 			var mainpage = Application.Current.MainPage;
-            var songlist = new songList();
+			var songlist = new songList();
 			Xamarin.Forms.DependencyService.Get<IThemeChange>().changeTheme();
 			if (currentTheme == "White")
-            {
+            {				
 				(mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.White;
-				PlayerSettings_Layout.BackgroundColor = Xamarin.Forms.Color.White;
+				PlayerSettings_Layout.BackgroundColor = Xamarin.Forms.Color.White;				
 				SaveSettings.BackgroundColor = Xamarin.Forms.Color.White;
 				ResetSettings.BackgroundColor = Xamarin.Forms.Color.White;
 				(mainpage as MainPage).lad.Background = Xamarin.Forms.Color.White;
-				(mainpage as MainPage).Find_music.Background = Brush.White;
-                (mainpage as MainPage).music_List.Background = Brush.White;
-                (mainpage as MainPage).Settings.Background = Brush.White;
                 (mainpage as MainPage).playerNext.Background = Brush.White;
                 (mainpage as MainPage).playerPause.Background = Brush.White;
                 (mainpage as MainPage).playerPlay.Background = Brush.White;
                 (mainpage as MainPage).playerPrev.Background = Brush.White;
+				(mainpage as MainPage).randomButton.BackgroundColor = Xamarin.Forms.Color.White;
 				(mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.White;
+				
 			}
             else if(currentTheme == "Black")
             {
@@ -131,14 +126,12 @@ namespace HMSMP
 				SaveSettings.BackgroundColor = Xamarin.Forms.Color.Black;
 				ResetSettings.BackgroundColor = Xamarin.Forms.Color.Black;
 				(mainpage as MainPage).lad.Background = Xamarin.Forms.Color.Black;
-				(mainpage as MainPage).Find_music.Background = Brush.Black;
-				(mainpage as MainPage).music_List.Background = Brush.Black;
-				(mainpage as MainPage).Settings.Background = Brush.Black;
 				(mainpage as MainPage).playerNext.Background = Brush.Black;
 				(mainpage as MainPage).playerPause.Background = Brush.Black;
 				(mainpage as MainPage).playerPlay.Background = Brush.Black;
 				(mainpage as MainPage).playerPrev.Background = Brush.Black;
-                (mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.Black ;
+				(mainpage as MainPage).randomButton.BackgroundColor = Xamarin.Forms.Color.Black;
+				(mainpage as MainPage).shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.Black ;
 			}
         }
         private void launchTheme()

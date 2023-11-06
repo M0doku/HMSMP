@@ -69,35 +69,5 @@ namespace HMSMP.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] FanfareTicker {
-            get {
-                object obj = ResourceManager.GetObject("FanfareTicker", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] nextplay_button {
-            get {
-                object obj = ResourceManager.GetObject("nextplay_button", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] SignusDRN {
-            get {
-                object obj = ResourceManager.GetObject("SignusDRN", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

@@ -15,9 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\5by7.ttf" />
+    <None Remove="Resources\CATArena.ttf" />
     <None Remove="Resources\cour.ttf" />
+    <None Remove="Resources\Dited.otf" />
     <None Remove="Resources\FanfareTicker.ttf" />
     <None Remove="Resources\led.ttf" />
+    <None Remove="Resources\MinecartLCD.ttf" />
     <None Remove="Resources\next_button.png" />
     <None Remove="Resources\n_button.png" />
     <None Remove="Resources\OrandakanKana.ttf" />
@@ -25,15 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\n_button.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\cour.ttf" />
-    <EmbeddedResource Include="Resources\FanfareTicker.ttf" />
-    <EmbeddedResource Include="Resources\led.ttf" />
-    <EmbeddedResource Include="Resources\OrandakanKana.ttf" />
-    <EmbeddedResource Include="Resources\SignusDRN.ttf" />
+    <EmbeddedResource Include="Resources\MinecartLCD.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,10 +40,6 @@
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\next_button.png" />
   </ItemGroup>
 
   <ItemGroup>

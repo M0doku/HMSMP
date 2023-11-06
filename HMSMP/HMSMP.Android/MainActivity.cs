@@ -54,7 +54,6 @@ namespace HMSMP.Droid
             CrossMediaManager.Current.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            RequestStorageAccess();
 			LoadApplication(new App());
             CrossMediaManager.Current.MediaItemChanged += songChanged;
 			PlayerSettings PS = new PlayerSettings();
@@ -126,13 +125,14 @@ namespace HMSMP.Droid
             Console.WriteLine("NOTIFICATION UPDATE1");
 		}
 
-		private void RequestStorageAccess()
+	/*	private void RequestStorageAccess()
 		{
 			if (!Android.OS.Environment.IsExternalStorageManager)
 			{
 				StartActivityForResult(new Intent(Android.Provider.Settings.ActionManageAllFilesAccessPermission), 3);
 			}
 		}
+	*/
 		private void songChanged(object sender, MediaItemEventArgs e)
 		{
 			CrossMediaManager.Current.Queue.Current.IsMetadataExtracted = false;

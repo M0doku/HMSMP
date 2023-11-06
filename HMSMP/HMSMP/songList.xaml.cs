@@ -29,11 +29,10 @@ namespace HMSMP
         static IEnumerable<Song> filteredList;
         static IEnumerable<Song> playList;
         IEnumerable<string> songs;
-        string color;
         string Orientation;
 		private static songList instance;
         public bool isAppearing = false;
-		public static songList Instance
+		/*public static songList Instance
 		{
 			get
 			{
@@ -49,12 +48,11 @@ namespace HMSMP
                 Console.WriteLine("CREATED SONGLIST");
 			}
 		}
+        */
 		public songList()
         {
             
             InitializeComponent();
-			
-			color = PlayerSettings.currentTheme;
 			themesPicker();
             
 			CrossMediaManager.Current.MediaItemChanged += mediaItem_Changed;
@@ -97,7 +95,6 @@ namespace HMSMP
             else if (PlayerSettings.currentTheme == "Black")
             {
                 SL.BackgroundColor = Xamarin.Forms.Color.Black;
-                
             }
         }
        
@@ -209,16 +206,9 @@ namespace HMSMP
                     string directory = PlayerSettings.folder;
                     //DisplayAlert("d", selectedSong.Number.ToString(), "s");
                     songs = Directory.EnumerateFiles(directory, "*.*").Where(s => s.ToUpper().Contains(searchSongs.Text.ToUpper()));
-                    songs = songs.Reverse();
-                    
-                    
-                    await CrossMediaManager.Current.Play(songs);
-                    
+                    songs = songs.Reverse();                                      
+                    await CrossMediaManager.Current.Play(songs);                   
                     MainPage.NextSong();
-
-
-
-
                 }
             }
     
@@ -238,24 +228,19 @@ namespace HMSMP
         }
 
         private void searchSongs_TextChanged(object sender, TextChangedEventArgs e)
-        {
-           
-                filteredList = list.Where(a => a.Title.Contains(e.NewTextValue.ToUpper()) || a.Artist.Contains(e.NewTextValue.ToUpper()));
+        {          
+                filteredList = list?.Where(a => a.Title.Contains(e.NewTextValue.ToUpper()) || a.Artist.Contains(e.NewTextValue.ToUpper()));
                 //filteredList = list.Where(a => a.Title.Contains(e.NewTextValue.ToUpper()));
-
 				songList_CV.ItemsSource = filteredList;
-            
         }
 
 		private void ContentPage_Appearing(object sender, EventArgs e)
 		{
 			if (CrossMediaManager.Current.Queue.MediaItems.Count > 0)
 			{
-				songPlayList();
-                
+				songPlayList();                
 				int song = MainPage.indexCurrentSong;
                 isAppearing = true;
-
 			}
 		}
 
@@ -274,11 +259,16 @@ namespace HMSMP
 					else if (Orientation == "Landscape")
 					{
 						int song = MainPage.indexCurrentSong;
-						songList_CV.ScrollTo(song + 2, animate: false);
+						songList_CV.ScrollTo(song, animate: false);
 					}
 				}
 			}
             isAppearing = false;
+		}
+
+		private async void ContentPage_Disappearing(object sender, EventArgs e)
+		{
+            await Navigation.PopAsync();
 		}
 	}
 }

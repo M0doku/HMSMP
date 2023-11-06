@@ -4,8 +4,8 @@
              x:Class="HMSMP.App">
 	<Application.Resources>
 		<Style ApplyToDerivedTypes="True" Class="FlyoutItemLabelStyle" TargetType="Label">
-			<Setter Property="FontFamily" Value="LED"/>
-			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="FontFamily" Value="MLCD"/>
+			<Setter Property="FontSize" Value="15"/>
 			<Setter Property="TextColor" Value="Red"/>
 		</Style>
 	</Application.Resources>

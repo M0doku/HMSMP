@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HMSMP.songList"
-			 Appearing="ContentPage_Appearing" LayoutChanged="ContentPage_LayoutChanged" >
+			 Appearing="ContentPage_Appearing" LayoutChanged="ContentPage_LayoutChanged" Disappearing="ContentPage_Disappearing">
     <ContentPage.Content>
         <StackLayout x:Name="SL"  x:FieldModifier="public"> 
             
@@ -15,12 +15,12 @@
                     <ColumnDefinition Width="*"/>
                     
                 </Grid.ColumnDefinitions>
-				<Label x:Name="songList_label" HorizontalOptions="Start" Grid.Row="0"  Text="Song List" FontSize="25" FontFamily="LED" HorizontalTextAlignment="Center"   TextColor="Red" Padding="0,0,0,0" />
-               <Label x:Name="labelPlaySongs" x:FieldModifier="public"  Grid.Row="0" Text="Play found songs?" Background="{Binding Color}" FontSize="20" Grid.ColumnSpan="2" FontFamily="LED" HorizontalOptions="EndAndExpand" TextColor="Red" Margin="0" Padding="0,0,50,0"></Label>
+				<Label x:Name="songList_label" Margin="10,0,0,0" HorizontalOptions="Start" Grid.Row="0"  Text="Song List" FontSize="18" FontFamily="MLCD" HorizontalTextAlignment="Center"   TextColor="Red" />
+                <Label x:Name="labelPlaySongs" x:FieldModifier="public"  Grid.Row="0" Text="Play found songs?" Background="{Binding Color}" FontSize="13" Grid.ColumnSpan="2" FontFamily="MLCD" HorizontalOptions="EndAndExpand" TextColor="Red" Margin="0" Padding="0,0,50,0"></Label>
                 <Switch x:Name="switchNewPlaylist" Grid.Row="0" Grid.Column="1" Margin="0,0,0,15"></Switch>
                 
             </Grid>
-            <SearchBar x:Name="searchSongs" x:FieldModifier="public" Margin="0,0,0,0" TextChanged="searchSongs_TextChanged" Placeholder="Find..." BackgroundColor="White" PlaceholderColor="Red" TextColor="Red" FontFamily="LED"  />
+            <SearchBar x:Name="searchSongs" x:FieldModifier="public" Margin="0,0,0,0" TextChanged="searchSongs_TextChanged" Placeholder="Find..." BackgroundColor="White" FontSize="15" PlaceholderColor="Red" TextColor="Red" FontFamily="MLCD"  />
 
 
             <CollectionView x:Name="songList_CV"   ItemsLayout="VerticalList">
@@ -34,18 +34,19 @@
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Row="0" x:Name="currentTrack" Grid.Column="0" WidthRequest="300"  Clicked="Title_Clicked" Margin="0,-10,0,0" FontSize="15" FontFamily="LED" BackgroundColor="{Binding Color}" TextColor="Red"  HorizontalOptions="Start">
+                            <Button Grid.Row="0" x:Name="currentTrack" Grid.Column="0" WidthRequest="300"  Clicked="Title_Clicked" Margin="0,-10,0,0" FontSize="12" FontFamily="MLCD" BackgroundColor="{Binding Color}" TextColor="Red"  HorizontalOptions="FillAndExpand">
                                 <Button.Text>
                                     <MultiBinding x:Name="stringBind" x:FieldModifier="public" StringFormat="{}{0}
-                                                  {1}">
+                                                                                                                                                      
+												  {1}">
                                         <Binding Path = "Title"/>
-                                        <Binding Path= "Artist"/>
+                                        <Binding Path = "Artist"/>
                                     </MultiBinding>
                                 </Button.Text>
                             </Button>
                             
-                            <Label Grid.Row="0" x:Name="trackDuration" Grid.Column="1" FontSize="15" FontFamily="LED"  VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{Binding Color}" TextColor="Red" Text="{Binding Duration}"></Label>
-                            <Label Grid.Row="0" Grid.Column="1" FontSize="15" FontFamily="LED"   TextColor="Red" Text="{Binding Number}" BackgroundColor="{Binding Color}" IsVisible="false"></Label>
+                            <Label Grid.Row="0" x:Name="trackDuration" Grid.Column="1" FontSize="12" FontFamily="MLCD"  VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="{Binding Color}" TextColor="Red" Text="{Binding Duration}"></Label>
+                            <Label Grid.Row="0" Grid.Column="1" FontSize="15" FontFamily="MLCD"   TextColor="Red" Text="{Binding Number}" BackgroundColor="{Binding Color}" IsVisible="false"></Label>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

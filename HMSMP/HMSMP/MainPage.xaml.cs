@@ -35,7 +35,6 @@ namespace HMSMP
         static IList<string> songs;
         double oldTime;
         double newTime;
-        static bool isEnd;
         string Orientation;
         TimeSpan ts;
         public static string theme;
@@ -52,7 +51,7 @@ namespace HMSMP
 
 		public MainPage()
         {
-            InitializeComponent();		
+            InitializeComponent();
 			checkPermissions();
 			CrossMediaManager.Current.MediaItemChanged += songsChanged;
             CrossMediaManager.Current.StateChanged += currentPlayerState_Changed;
@@ -68,59 +67,35 @@ namespace HMSMP
             themesPicker();
             startLayout();         
 		}
-		private async void checkPermissions()
+		private void checkPermissions()
         {
             Task checkStatus = new Task(async () =>
             {
                 var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Plugin.Permissions.Abstractions.Permission.Storage);
                 if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Plugin.Permissions.Abstractions.Permission.Storage))
                 {
-                    await DisplayAlert("Need storage", "Request storage permission", "OK");
-                    
+                    await DisplayAlert("Need storage", "Request storage permission", "OK");                   
                 }
                 var results = await CrossPermissions.Current.RequestPermissionsAsync(Plugin.Permissions.Abstractions.Permission.Storage);
-                //Best practice to always check that the key exists
                 if (results.ContainsKey(Plugin.Permissions.Abstractions.Permission.Storage))
                     status = results[Plugin.Permissions.Abstractions.Permission.Storage];
-
-
             });
-            checkStatus.Start();
-           
-            
-        }
-      
+            checkStatus.Start();           
+        }    
         private void themesPicker()
         {
-            /*
-            {
-                Label_songName.TextColor = Xamarin.Forms.Color.SlateBlue;
-                Label_artist.TextColor = Xamarin.Forms.Color.SlateBlue;
-                slider_Position.ThumbColor = Xamarin.Forms.Color.SlateBlue;
-                slider_Position.MaximumTrackColor = Xamarin.Forms.Color.SlateBlue;
-                playerDuration.TextColor = Xamarin.Forms.Color.SlateBlue;
-                slider_Position.MinimumTrackColor = Xamarin.Forms.Color.SlateBlue;
-                lad.Background = Brush.White;
-                Settings.Background = Brush.White;
-                Settings.TextColor = Xamarin.Forms.Color.SlateBlue;
-            }*/
             if (PlayerSettings.currentTheme == "White")
-            {
-                
+            {           
                 lad.BackgroundColor = Xamarin.Forms.Color.White;
                 slider_Position.ThumbColor = Xamarin.Forms.Color.Red;
                 slider_Position.MaximumTrackColor = Xamarin.Forms.Color.Red;
                 slider_Position.MinimumTrackColor = Xamarin.Forms.Color.Red;
-                Find_music.Background = Brush.White;
-                music_List.Background = Brush.White;
-                Settings.Background = Brush.White;
 				playerNext.BackgroundColor = Xamarin.Forms.Color.White;
 				playerPause.BackgroundColor = Xamarin.Forms.Color.White;
                 playerPlay.BackgroundColor = Xamarin.Forms.Color.White;
                 playerPrev.BackgroundColor = Xamarin.Forms.Color.White;
                 shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.White;
-
-
+                randomButton.BackgroundColor = Xamarin.Forms.Color.White;
             }
             else if(PlayerSettings.currentTheme == "Black")
             {
@@ -128,14 +103,12 @@ namespace HMSMP
 				slider_Position.MaximumTrackColor = Xamarin.Forms.Color.Red;
 				slider_Position.MinimumTrackColor = Xamarin.Forms.Color.Red;
 				lad.BackgroundColor = Xamarin.Forms.Color.Black;
-				Find_music.Background = Brush.Black;
-				music_List.Background = Brush.Black;
-				Settings.Background = Brush.Black;
 				playerNext.BackgroundColor = Xamarin.Forms.Color.Black;
 				playerPause.BackgroundColor = Xamarin.Forms.Color.Black;
 				playerPlay.BackgroundColor = Xamarin.Forms.Color.Black;
 				playerPrev.BackgroundColor = Xamarin.Forms.Color.Black;
 				shellMainPage.FlyoutBackgroundColor = Xamarin.Forms.Color.Black;
+				randomButton.BackgroundColor = Xamarin.Forms.Color.Black;
 			}
         }
         void startLayout()
@@ -144,11 +117,11 @@ namespace HMSMP
 			if (Orientation == "Portrait")
             {
                 portraitLayout();
-	}
+          	}
             else if(Orientation == "Landscape")
             {
                 landscapeLayout();
-}
+            }
         }
         void updateLayout(object sender, DisplayInfoChangedEventArgs e)
         {
@@ -171,13 +144,17 @@ namespace HMSMP
             songRow.Height = phoneHeight * 0.1;
             durationRow.Height = phoneHeight * 0.1;
             sliderRow.Height = phoneHeight * 0.05;
-            shuffleRow.Height = phoneHeight * 0.05;
-            buttonsRow.Height = phoneHeight * 0.4;
+            shuffleRow.Height = phoneHeight * 0.035;
+            aboveButtonsRow.Height = phoneHeight * 0.15;
+            buttonsRow.Height = phoneHeight * 0.075;         
             playerNext.HeightRequest = phoneHeight * 0.1;
             playerPause.HeightRequest = phoneHeight * 0.1;
             playerPlay.HeightRequest = phoneHeight * 0.1;
             playerPrev.HeightRequest = phoneHeight * 0.1;
-            Console.WriteLine("PHONEHEIGHT: " + phoneHeight);
+			playerNext.Margin = new Thickness(0, 0, 0, 0);
+			playerPrev.Margin = new Thickness(0, 0, 0, 0);
+			playerPlay.Margin = new Thickness(0, 0, 0, 0);
+			playerPause.Margin = new Thickness(0, 0, 0, 0);
 		} 
         void landscapeLayout()
         {
@@ -186,13 +163,17 @@ namespace HMSMP
             songRow.Height = phoneWidth * 0.15;
             durationRow.Height = phoneWidth * 0.1;
             sliderRow.Height = phoneWidth * 0.05;
-            shuffleRow.Height = phoneWidth * 0.05;
-            buttonsRow.Height = phoneWidth * 0.4;
+            shuffleRow.Height = phoneWidth * 0.075;
+            aboveButtonsRow.Height = phoneWidth * 0.1;
+            buttonsRow.Height = phoneWidth * 0.2;
 			playerNext.HeightRequest = phoneWidth * 0.2;
 			playerPause.HeightRequest = phoneWidth * 0.2;
 			playerPlay.HeightRequest = phoneWidth * 0.2;
 			playerPrev.HeightRequest = phoneWidth * 0.2;
-
+            playerNext.Margin = new Thickness(0, 0, 0, 10);
+            playerPrev.Margin = new Thickness(0, 0, 0, 10);
+            playerPlay.Margin = new Thickness(0, 0, 0, 10);
+            playerPause.Margin = new Thickness(0, 0, 0, 10);
 		}
         private void currentPosition(TimeSpan currentPosition)
         {
@@ -212,17 +193,11 @@ namespace HMSMP
             newTime = e.NewValue;
 
             if (((oldTime + 2 < newTime) || (newTime + 2 < oldTime)) && CrossMediaManager.Current.Position.TotalSeconds > 1)
-            {
-				
+            {				
 				slider_Position.Value = newTime;
-                string d = newTime.ToString();
                 ts = TimeSpan.FromSeconds(newTime);
                 await CrossMediaManager.Current.SeekTo(ts);
                 ts = TimeSpan.Zero;
-                if(isRandom == true)
-                {
-					randSong();
-				}
             }
             
             double totalSeconds = CrossMediaManager.Current.Duration.TotalSeconds;
@@ -237,12 +212,7 @@ namespace HMSMP
 				Device.BeginInvokeOnMainThread(() =>
 				{
 					currentPosition(e.Position);
-				});
-               if(isRandom == true)
-                {
-					
-				}
-				
+				});		
 			}
            
         }
@@ -263,16 +233,9 @@ namespace HMSMP
                 playerPause.IsVisible = false;
                 playerPlay.IsVisible = true;
             }
-			else if (playerState == MediaManager.Player.MediaPlayerState.Playing && CrossMediaManager.Current.Duration.TotalSeconds > 3)
-			{
-
-
-			}
-
 		}
         private void songIsFinished(object sender, MediaItemEventArgs e)
         {
-
         }
         private void currentPlayerState_Changed(object sender, StateChangedEventArgs e)
         {
@@ -281,16 +244,6 @@ namespace HMSMP
             {
                 currentPlayerState(e.State);
             });
-        }
-        class Song
-        {
-            public string Title { get; set; }
-            public string Artist { get; set; }
-            public string songPath { get; set; }
-        }
-        public void ButtonTest_Clicked(object sender, EventArgs e)
-        {
-            Label_test.Text = PlayerSettings.folder;
         }
         private async Task findMusic()
         {
@@ -318,51 +271,7 @@ namespace HMSMP
         {           
           await findMusic();
         }
-        private void randSong()
-        {
-            
-            Random rand = new Random();
-            nextSong = rand.Next(0, songs.Count - 1);
-        
-         
-		}
-        private static IEnumerable<string> rand(IList<string> enumerable)
-        {
-            Random rand = new Random();
-            var temp = enumerable.ToList();
-            for (int i = 0; i < temp.Count; i++)
-            {
-                int j = rand.Next(0, temp.Count);
-                yield return temp[j];
-                temp[j] = temp[i];
-            }
-        }
-        private async void shuffle_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                
-                await CrossMediaManager.Current.Play(songs);
-            }
-            catch { }
-        }
-		/*public async Task metadataChange()
-        {
-            string file = songs[2];
-            using (TagLib.File tagFile = TagLib.File.Create(file))
-            {
-                
-                string artist = tagFile.Tag.FirstAlbumArtist;
-                string title = tagFile.Tag.Title;
-                tagFile.Tag.Performers = null;
-                tagFile.Tag.Performers = new[] { title };
-                tagFile.Tag.Title = artist;
-				Console.WriteLine($"ARTIST: {tagFile.Tag.Performers[0]}, TITLE: {tagFile.Tag.Title}, FILENAME: {songs[1]}");
-			}
-            
-        }*/
-        
-		private async void songsChanged(object sender, MediaItemEventArgs e)
+		private void songsChanged(object sender, MediaItemEventArgs e)
         {
             if(songs.Count > 0)
             {
@@ -370,17 +279,10 @@ namespace HMSMP
 				currentPosition(CrossMediaManager.Current.Position);
 				currentPlayerState(CrossMediaManager.Current.State);
 				NextSong();
-               
 				indexCurrentSong = CrossMediaManager.Current.Queue.CurrentIndex;
                 //CrossMediaManager.Current.Notification.Enabled = false;
             }
-
-
-
-
-
 		}
-
 		public static void NextSong()
 		{
 			string title = CrossMediaManager.Current.Queue.Current.Title;
@@ -388,15 +290,13 @@ namespace HMSMP
 			string fileName = CrossMediaManager.Current.Queue.Current.FileName;
 			var mainpage = Application.Current.MainPage;
 			bool contain = CrossMediaManager.Current.Queue.Current.FileName.Contains('-');
-			if (!string.IsNullOrEmpty(artist))
+			if (!string.IsNullOrEmpty(artist)) //Init artist with metadata
 			{
-				///Compare(english_alphabet, eng_up, title, Label_songName, Label_artist);
 				(mainpage as MainPage).Label_songName.Text = artist;
 				title_android = artist;
 			}
-			else if (contain)
+			else if (contain) //Init artist without metadata | Artist - SongName.mp3
 			{
-
 				string current_title = fileName;
 				int index = current_title.IndexOf('-');
 				if (current_title[index + 1] == ' ')
@@ -413,44 +313,18 @@ namespace HMSMP
 					(mainpage as MainPage).Label_songName.Text = current_title.Substring(0, length);
 					title_android = current_title.Substring(0, length);
 				}
-				//(mainpage as MainPage).Label_songName.Text = current_title.Substring(0, index - 1);
-				/*
-				 * for(int i = 0; i < current_title?.Length - 1; i++)
-                {
-                    char? a = current_title[i]; 
-                    char? b = current_title[1 + i];
-                    if(a == ' ' && b == '-')
-                    {
-                        int index = (int)a;
-						(mainpage as MainPage).Label_songName.Text = current_title.Substring(0, index);
-					}
-                   
-                }
-                */
-
-
 			}
 			else
 			{
-
 				(mainpage as MainPage).Label_songName.Text = "";
 			}
-
-			if (!string.IsNullOrEmpty(artist))
+			if (!string.IsNullOrEmpty(artist)) //Init songname with metadata 
 			{
 				(mainpage as MainPage).Label_artist.Text = title;
-
 				artist_android = title;
-
 			}
-			else if (contain)
+			else if (contain) //Init songname without metadata | Artist - SongName.mp3
 			{
-				/* string current_artist = fileName;
-				 int index = current_artist.IndexOf('-');
-				 current_artist = current_artist.Substring(index + 2);
-				 index = current_artist.Length - 4;
-				 (mainpage as MainPage).Label_artist.Text = current_artist.Substring(0, index);
-			   */
 				string current_title = fileName;
 				int index = current_title.IndexOf('-');
 				if (current_title[index + 1] == ' ')
@@ -468,21 +342,15 @@ namespace HMSMP
 					int lengthTitle = current_title.Length - length;
 					(mainpage as MainPage).Label_artist.Text = current_title.Substring(length, lengthTitle - 4);
 				}
-
 			}
 			else
 			{
 				(mainpage as MainPage).Label_artist.Text = "";
 			}
-
 		}
-
 		private void playerPlay_Clicked(object sender, EventArgs e)
-        {
-			
-			CrossMediaManager.Current.Play();
-
-            
+        {			
+			CrossMediaManager.Current.Play();           
         }
         private void playerPause_Clicked(object sender, EventArgs e)
         {
@@ -490,23 +358,15 @@ namespace HMSMP
         }   
         private void playerNext_Clicked(object sender, EventArgs e)
         {
-                if (songs.Count > 0)
+                if (songs?.Count > 0)
                 {
-
                     CrossMediaManager.Current.PlayNext();
                     CrossMediaManager.Current.Play();
-              /*  if(isRandom == true)
-                {
-					randSong();
-					CrossMediaManager.Current.PlayQueueItem(nextSong);
-                    CrossMediaManager.Current.Play();
-				}*/
                 }
         }
         private void playerPrev_Clicked(object sender, EventArgs e)
         {
-
-                if (songs.Count() > 0)
+                if (songs?.Count() > 0)
                 {
                  if (CrossMediaManager.Current.Queue.HasPrevious == false)
                     {
@@ -515,86 +375,32 @@ namespace HMSMP
                     }
                     CrossMediaManager.Current.PlayPrevious();
                     CrossMediaManager.Current.Play();  
-                }
-                
+                }              
         }
-        private void Compare(string[] eng, string[] eng_up, string title, Label Label_title, Label Label_artist)
-        {
-            foreach (string x in eng)
-            {
-                foreach (string y in eng_up)
-                {
-                    
-                            if (title.Contains(x) || title.Contains(y))
-                            {
-                                Label_title.FontFamily = "LED";
-                                Label_artist.FontFamily = "LED";
-                                break;
-                            }
-                            else
-                            {
-                                Label_title.FontFamily = "Oran";
-                                Label_artist.FontFamily = "Oran";
-                            }
-                    
-                }
-            }
-        }
-        private async void songList_Clicked(object sender, EventArgs e)
-        {
-        
-            await Navigation.PushModalAsync(new songList());
-        }
-       private async void Settings_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new PlayerSettings());          
-        }
-
-		private void ContentPage_Appearing(object sender, EventArgs e)
+		private async void ContentPage_Appearing(object sender, EventArgs e)
 		{
-			PlayerSettings ps = new PlayerSettings();
+            PlayerSettings ps = new PlayerSettings();
 			if (PlayerSettings.loadMusic == true && mainPageisAppearing == false)
 			{
-				 findMusic();
-				
+				 await findMusic();
 			}
 			mainPageisAppearing = true;
-			
-			Console.WriteLine($"SWAPED: {PlayerSettings.loadMusic}, {mainPageisAppearing}");
-
-
         }
-       
-		private void Stop_Clicked(object sender, EventArgs e)
-		{
-            Console.WriteLine("MAINPAGEHEIGHT" + Application.Current.MainPage.Height);
-			
-		}
-
 		private async void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
 		{
-
-			await findMusic();
-			
+            await CrossMediaManager.Current.Stop();
+			await findMusic();		
 		}
-
 		private async void SwipeGestureRecognizer_Swiped_1(object sender, SwipedEventArgs e)
 		{
-            Console.WriteLine("GOVNISHE");
-
-            //await Shell.Current.GoToAsync("//songList", true);
            await Navigation.PushAsync(new songList());
-
 		}
-
 		private void random_Clicked(object sender, EventArgs e)
 		{
             if (isRandom == false && PlayerSettings.currentTheme == "White")
             {
                 isRandom = true;
                 createRandomPlaylist();
-
-
 				randomButton.BorderColor = Xamarin.Forms.Color.Black;
             }
             else if (isRandom == false && PlayerSettings.currentTheme == "Black")
@@ -617,38 +423,32 @@ namespace HMSMP
         public IList<IMediaItem> Randomize(IList<IMediaItem> array)
         {
             Random random = new Random();
-            Parallel.For(0, array.Count, i =>
+            for(int i = 0; i < array.Count; i++)
             {
 				int r = random.Next(i, array.Count);
 				(array[r], array[i]) = (array[i], array[r]);
-			});           
+			}
             return array;
         }
         public void createRandomPlaylist()
         {
 				int currentSongIndex = 0;
 				IList<IMediaItem> items = CrossMediaManager.Current.Queue.MediaItems.Cast<IMediaItem>().ToList();
-
 				bool isSongFinded = false;
 				int mediaCount = CrossMediaManager.Current.Queue.Count();
 				int playingSongIndex = indexCurrentSong;
 				IMediaItem currentSong = CrossMediaManager.Current.Queue.Current;
-				Console.WriteLine("MEDIACOUNT :" + mediaCount);
-				Stopwatch stopwatch = new Stopwatch();
-				stopwatch.Start();
 				for (int i = 0; i < mediaCount; i++)
 				{
 					if (i == playingSongIndex)
 					{
 						isSongFinded = true;
 						continue;
-
 					}
 					else if (isSongFinded == false)
 					{
 						CrossMediaManager.Current.Queue.RemoveAt(0);
 						currentSongIndex++;
-
 					}
 					else if (isSongFinded == true)
 					{
@@ -667,9 +467,7 @@ namespace HMSMP
 					CrossMediaManager.Current.Queue.Add(randomSongs[i]);
 
 				}
-				stopwatch.Stop();
-				Console.WriteLine("ELAPSEDTIME: " + stopwatch.ElapsedMilliseconds);
-           
+                indexCurrentSong = 0;          
         }
 	}
 }

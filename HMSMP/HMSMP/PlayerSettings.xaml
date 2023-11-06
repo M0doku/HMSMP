@@ -18,16 +18,16 @@
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<Label x:Name="Labl" Grid.Row="0"  Text="Folder for finding songs:" Grid.ColumnSpan="2"  FontFamily="LED" HorizontalOptions="Center"  FontSize="20" TextColor="Red"></Label>
-				<Label x:Name="FindingLabel" Grid.Row="1" Grid.Column="0" Text="Save this path?" FontFamily="LED" HorizontalOptions="StartAndExpand"  FontSize="20" TextColor="Red"/>
+				<Label x:Name="Labl" Grid.Row="0"  Text="Folder for finding songs:" Grid.ColumnSpan="2"  FontFamily="MLCD" HorizontalOptions="Center"  FontSize="15" TextColor="Red"></Label>
+				<Label x:Name="FindingLabel" Grid.Row="1" Grid.Column="0" Text="Save this path?" FontFamily="MLCD" HorizontalOptions="StartAndExpand"  FontSize="15" TextColor="Red" Margin="5,0,0,0"/>
 				<Switch x:Name="saveFolderName"  Grid.Column="1" Grid.Row="1" HorizontalOptions="FillAndExpand"></Switch>
-				<Entry x:Name="folderName" Grid.ColumnSpan="2" Grid.Row="2"  FontFamily="LED" HorizontalOptions="StartAndExpand"  FontSize="20" TextColor="Red" Text="/storage/emulated/0/Music"></Entry>
-				<Label x:Name="loadSongs" Grid.ColumnSpan="2" Grid.Row="3" Text="Load music automatically?" FontFamily="LED" HorizontalOptions="Start"  FontSize="20" TextColor="Red"/>
+				<Entry x:Name="folderName" Grid.ColumnSpan="2" Grid.Row="2"  FontFamily="MLCD" HorizontalOptions="StartAndExpand"  FontSize="15" TextColor="Red" Text="/storage/emulated/0/Music" Margin="5,0,0,0"></Entry>
+				<Label x:Name="loadSongs" Grid.ColumnSpan="2" Grid.Row="3" Text="Load music automatically?" FontFamily="MLCD" HorizontalOptions="Start"  FontSize="15" TextColor="Red" Margin="5,0,0,0"/>
 				<Switch x:Name="loadSongsSwitch" Grid.ColumnSpan="2" Grid.Row="3"></Switch>
-				<Label x:Name="theme" Text="Theme:" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="LED" HorizontalOptions="Start" FontSize="20" TextColor="Red"></Label>
-				<Picker x:Name="themePicker" WidthRequest="100"  SelectedItem="Black" Title="Theme" HorizontalTextAlignment="Center" TitleColor="Red" Grid.Row="4" FontFamily="LED" HorizontalOptions="CenterAndExpand"  FontSize="20" TextColor="Red"></Picker>
-				<Button x:Name="SaveSettings" Grid.Column="0"   Clicked="SaveSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Save Settings"  FontFamily="LED" FontSize="15" TextColor="Red"/>
-				<Button x:Name="ResetSettings" Grid.Column="1"  Clicked="ResetSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Reset Settings"  FontFamily="LED" FontSize="15" TextColor="Red"/>
+				<Label x:Name="theme" Text="Theme:" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="MLCD" HorizontalOptions="Start" FontSize="15" TextColor="Red" Margin="5,0,0,0"></Label>
+				<Picker x:Name="themePicker" WidthRequest="100"  SelectedItem="Black" Title="Theme" HorizontalTextAlignment="Center" TitleColor="Red" Grid.Row="4" FontFamily="MLCD" HorizontalOptions="CenterAndExpand"  FontSize="15" TextColor="Red"></Picker>
+				<Button x:Name="SaveSettings" Grid.Column="0"   Clicked="SaveSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Save Settings"  FontFamily="MLCD" FontSize="13" TextColor="Red"/>
+				<Button x:Name="ResetSettings" Grid.Column="1"  Clicked="ResetSettings_Clicked" VerticalOptions="End" Grid.Row="5"  Text="Reset Settings"  FontFamily="MLCD" FontSize="13" TextColor="Red"/>
 			</Grid>
 		</StackLayout>
     </ContentPage.Content>

@@ -1,9 +1,9 @@
+D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.csproj.AssemblyReference.cache
+D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.csproj.GenerateResource.cache
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\bin\Debug\netstandard2.0\HMSMP.deps.json
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\bin\Debug\netstandard2.0\HMSMP.dll
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\bin\Debug\netstandard2.0\HMSMP.pdb
-D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.csproj.AssemblyReference.cache
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.Properties.Resources.resources
-D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.csproj.GenerateResource.cache
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\HMSMP.GeneratedMSBuildEditorConfig.editorconfig
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\Modoku_29_09\HMSMP\HMSMP\HMSMP\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
