@@ -3,16 +3,16 @@
 HMSMP - музыкальный плеер с минималистичным интерфейсом.
 
 ## UI
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/87c04c39-ba2c-4fb0-bd7a-41f05d612ce6" width="24.5%" />
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/ecb4497c-91df-45b9-9607-7d5d11e36db9" width=24.5%/>
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/c7784bc4-7a50-47ab-9cd5-37561442882c" width=24.5% />
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/57678dff-432a-4934-8a90-bfa3665dea3d" width=24.5% />
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/fdb58dab-9a2d-4716-8111-01d8789dd397" width=49.5% />
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/e7cc4485-eab9-4785-a4c6-a6420d10b7c0" width=49.5% />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/499e0530-dc7e-438b-96c3-b587f382c245" width="24.5%" />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/397c1fc9-0f4b-4994-b2f1-e8851ee1053c" width=24.5%/>
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/c338bc27-56fd-4673-aed7-7f864e92a956" width=24.5% />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/fc29b774-672f-4e64-a94f-ac805f59f3a0" width=24.5% />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/9ead42f1-52bf-4469-86c3-373240858121" width=49.5% />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/991e5b0a-9da8-44de-8fc8-a000a27d7090" width=49.5% />
 
 
 
-<img src="https://github.com/M0doku/HMSMP/assets/88943677/1e2f9b47-21e3-481b-8621-779df6e6d1af" align=right width=30% height=30% />
+<img src="https://github.com/M0doku/HMSMP/assets/88943677/d6633c39-f162-4df0-a3df-fcb336d2b48a" align=right width=30% height=30% />
 
 ### Как пользоваться?
 1. Скачать и выдать приложению необходимые для работы разрешения.
